@@ -1,0 +1,15 @@
+{
+    "name": "Debug Android",
+    "program": "${workspaceRoot}/.vscode/launchReactNative.js",
+    "type": "reactnative",
+    "request": "launch",
+    "platform": "android",
+    "sourceMaps": true,
+    "outDir": "${workspaceRoot}/.vscode/.react",
+    "logCatArguments": [
+      "*:S",
+      "ReactNative:W",
+      "ReactNativeJS:W",
+      "App:V"
+    ]
+  }

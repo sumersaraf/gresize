@@ -1,49 +1,77 @@
-import React from 'react';
-import {
-  FlatList,
-  Text,
-  View,
-  Image,
-  TouchableHighlight
-} from 'react-native';
-import styles from './styles';
-import { categories } from '../../data/dataArrays';
-import { getNumberOfRecipes } from '../../data/MockDataAPI';
+import React, { useState, useEffect } from 'react';
+import { Text, View, TouchableOpacity, Alert } from 'react-native';
+import { Camera } from 'expo-camera';
 
-export default class CategoriesScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Categories'
-  };
+export default function App({ navigation }) {
+  const [hasPermission, setHasPermission] = useState(null);
+  const [type, setType] = useState(Camera.Constants.Type.back);
 
-  constructor(props) {
-    super(props);
+  useEffect(() => {
+    (async () => {
+      const { status } = await Camera.requestPermissionsAsync();
+      setHasPermission(status === 'granted');
+    })();
+  }, []);
+
+  if (hasPermission === null) {
+    return <View />;
   }
-
-  onPressCategory = item => {
-    const title = item.name;
-    const category = item;
-    this.props.navigation.navigate('RecipesList', { category, title });
-  };
-
-  renderCategory = ({ item }) => (
-    <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressCategory(item)}>
-      <View style={styles.categoriesItemContainer}>
-        <Image style={styles.categoriesPhoto} source={{ uri: item.photo_url }} />
-        <Text style={styles.categoriesName}>{item.name}</Text>
-        <Text style={styles.categoriesInfo}>{getNumberOfRecipes(item.id)} recipes</Text>
-      </View>
-    </TouchableHighlight>
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+  return (
+    <View style={{ flex: 1 }}>
+      <Camera style={{ flex: 1 }} type={type}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: 'transparent',
+            flexDirection: 'row',
+          }}>
+          {/* <TouchableOpacity
+            style={{
+              flex: 0.1,
+              alignSelf: 'flex-end',
+              alignItems: 'center',
+            }}
+            onPress={() => {
+              setType(
+                type === Camera.Constants.Type.back
+                  ? Camera.Constants.Type.front
+                  : Camera.Constants.Type.back
+              );
+            }}>
+            <Text style={{ fontSize: 18, marginBottom: 10, color: 'white' }}> Flip </Text>
+          </TouchableOpacity> */}
+          <TouchableOpacity
+            style={{
+              flex: 0.1,
+              alignSelf: 'flex-end',
+              alignItems: 'center',
+            }}
+            onPress={() => Alert.alert(
+              'Gresize',
+              'Congratulations! Your size has been measured. Please proceed to shop.',
+              [
+                // {text: 'Cancel', onPress: () => console.log('Cancel Pressed!')},
+                { text: 'OK', onPress: () => navigation.goBack() },
+              ],
+              { cancelable: false }
+            )}
+          // onPress={() => Alert.alert('Congratulations! Your size has been measured. Please proceed to shop.')}
+          // onPress={() => navigation.goBack()}
+          // onPress={() => {
+          //   setType(
+          //     type === Camera.Constants.Type.back
+          //       ? Camera.Constants.Type.front
+          //       : Camera.Constants.Type.back
+          //   );
+          // }}
+          >
+            <Text style={{ fontSize: 18, marginBottom: 10, color: 'white' }}> Ok </Text>
+          </TouchableOpacity>
+        </View>
+      </Camera>
+    </View>
   );
-
-  render() {
-    return (
-      <View>
-        <FlatList
-          data={categories}
-          renderItem={this.renderCategory}
-          keyExtractor={item => `${item.id}`}
-        />
-      </View>
-    );
-  }
 }

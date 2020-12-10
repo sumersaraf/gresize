@@ -1,6 +1,6 @@
 import { createAppContainer } from 'react-navigation';
-import {createDrawerNavigator} from 'react-navigation-drawer'
-import {createStackNavigator} from 'react-navigation-stack'
+import { createDrawerNavigator } from 'react-navigation-drawer'
+import { createStackNavigator } from 'react-navigation-stack'
 /* import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
 import {NavigationContainer} from '@react-navigation/native'
@@ -9,6 +9,7 @@ import HomeScreen from '../screens/Home/HomeScreen';
 import CategoriesScreen from '../screens/Categories/CategoriesScreen';
 import RecipeScreen from '../screens/Recipe/RecipeScreen';
 import RecipesListScreen from '../screens/RecipesList/RecipesListScreen';
+import Test from '../screens/Test/Test';
 import DrawerContainer from '../screens/DrawerContainer/DrawerContainer';
 import IngredientScreen from '../screens/Ingredient/IngredientScreen';
 import SearchScreen from '../screens/Search/SearchScreen';
@@ -41,17 +42,19 @@ function MainNavigator() {
 
 const MainNavigator = createStackNavigator(
   {
-    Home: HomeScreen,
-    Categories: CategoriesScreen,
+    // Home: HomeScreen,
+    Home: Test,
+    Gresize: CategoriesScreen,
     Recipe: RecipeScreen,
-    RecipesList: RecipesListScreen,
+    RecipesList: Test,
     Ingredient: IngredientScreen,
     Search: SearchScreen,
-    IngredientsDetails: IngredientsDetailsScreen
+    IngredientsDetails: IngredientsDetailsScreen,
+    RecipesListScreen: RecipesListScreen, 
+    HomeScreen: HomeScreen
   },
   {
-    initialRouteName: 'Home',
-    // headerMode: 'float',
+    initialRouteName: 'HomeScreen',
     defaulfNavigationOptions: ({ navigation }) => ({
       headerTitleStyle: {
         fontWeight: 'bold',
@@ -61,7 +64,7 @@ const MainNavigator = createStackNavigator(
       }
     })
   }
-); 
+);
 
 /* const Drawer = createDrawerNavigator();
 
@@ -99,7 +102,7 @@ const DrawerStack = createDrawerNavigator(
     </NavigationContainer>
   )
 } */
- 
+
 export default AppContainer = createAppContainer(DrawerStack);
 
 console.disableYellowBox = true;
