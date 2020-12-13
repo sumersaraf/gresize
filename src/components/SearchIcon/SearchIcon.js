@@ -7,7 +7,7 @@ export default class SearchIcon extends React.Component {
   render() {
     return (
       <TouchableHighlight onPress={this.props.onPress} style={styles.btnContainer}>
-        <Image source={require('../../../assets/icons/search.png')} style={styles.btnIcon} />
+        <Image source={require('../../../assets/icons/gresize.png')} style={styles.btnIcon} />
       </TouchableHighlight>
     );
   }

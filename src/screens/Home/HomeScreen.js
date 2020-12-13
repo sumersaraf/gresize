@@ -3,6 +3,7 @@ import { FlatList, ScrollView, Text, View, TouchableHighlight, Image } from 'rea
 import styles from './styles';
 import { recipes } from '../../data/dataArrays';
 import MenuImage from '../../components/MenuImage/MenuImage';
+import SearchIcon from '../../components/SearchIcon/SearchIcon';
 import DrawerActions from 'react-navigation';
 import { getCategoryName } from '../../data/MockDataAPI';
 
@@ -15,7 +16,14 @@ export default class HomeScreen extends React.Component {
           navigation.openDrawer();
         }}
       />
-    )
+    ),
+    headerRight: (<SearchIcon
+      onPress={() => {
+        // navigation.goBack();
+        console.log('chala')
+        navigation.navigate('Home')
+      }}
+    />)
   });
   // https://cdn.aboutstatic.com/file/62772ac04e530b6a36544bbb0c8bb2d6?width=1200&height=1600&quality=75&bg=F4F4F5&trim=1
   constructor(props) {
