@@ -15,20 +15,21 @@ const styles = StyleSheet.create({
   image: {
     ...StyleSheet.absoluteFillObject,
     width: '100%',
-    height: 250
+    height: 450
   },
   imageContainer: {
     flex: 1,
     justifyContent: 'center',
     width: viewportWidth,
-    height: 250
+    height: 450
   },
   paginationContainer: {
     flex: 1,
     position: 'absolute',
-    alignSelf: 'center',
+    // alignSelf: '',
     paddingVertical: 8,
-    marginTop: 200
+    marginLeft: 150,
+    marginTop: 400
   },
   paginationDot: {
     width: 8,
@@ -83,7 +84,37 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     textAlign: 'center'
-  }
+  },
+  roundButton1: {
+    width: 70,
+    height: 70,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // textAlign: 'center',
+    padding: 30,
+    margin: 20,
+    borderWidth: 1,
+    borderRadius: 100,
+    backgroundColor: 'lightgreen',
+  },
+  roundButton2: {
+    width: 70,
+    height: 70,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // textAlign: 'center',
+    padding: 30,
+    borderWidth: 1,
+    margin: 20,
+    borderRadius: 100,
+    backgroundColor: 'white',
+  },
+  infoContainerButtons: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
 });
 
 export default styles;

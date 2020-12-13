@@ -1,4 +1,8 @@
+<script src="http://localhost:8097"></script>
+// import React from 'react';
 import React from 'react';
+import ReactDOM from 'react-dom'
+
 import {
   FlatList,
   ScrollView,
@@ -104,23 +108,42 @@ export default class RecipeScreen extends React.Component {
             </TouchableHighlight>
           </View>
 
-          <View style={styles.infoContainer}>
+          {/* <View style={styles.infoContainer}>
             <Image style={styles.infoPhoto} source={require('../../../assets/icons/time.png')} />
             <Text style={styles.infoRecipe}>{item.time} minutes </Text>
+          </View> */}
+          <View style={styles.infoContainerButtons}>
+            <TouchableOpacity
+              // onPress={buttonClickedHandler}
+              style={styles.roundButton2}>
+              <Text>S</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              // onPress={buttonClickedHandler}
+              style={styles.roundButton2}>
+              <Text>M</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              // onPress={buttonClickedHandler}
+              style={styles.roundButton1}>
+              <Text >L</Text>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.infoContainer}>
             <ViewIngredientsButton
-              onPress={() => {
-                let ingredients = item.ingredients;
-                let title = 'Ingredients for ' + item.title;
-                navigation.navigate('IngredientsDetails', { ingredients, title });
-              }}
+              onPress={() => { }}
+            // onPress={() => {
+            //   let ingredients = item.ingredients;
+            //   let title = 'Ingredients for ' + item.title;
+            //   navigation.navigate('IngredientsDetails', { ingredients, title });
+            // }
+            // }
             />
           </View>
-          <View style={styles.infoContainer}>
+          {/* <View style={styles.infoContainer}>
             <Text style={styles.infoDescriptionRecipe}>{item.description}</Text>
-          </View>
+          </View> */}
         </View>
       </ScrollView>
     );

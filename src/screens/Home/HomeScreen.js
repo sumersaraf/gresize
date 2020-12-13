@@ -17,7 +17,7 @@ export default class HomeScreen extends React.Component {
       />
     )
   });
-
+  // https://cdn.aboutstatic.com/file/62772ac04e530b6a36544bbb0c8bb2d6?width=1200&height=1600&quality=75&bg=F4F4F5&trim=1
   constructor(props) {
     super(props);
   }
@@ -31,7 +31,7 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <Image style={styles.photo} source={{ uri: item.photo_url }} />
         <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.category}>{getCategoryName(item.categoryId)}</Text>
+        <Text style={styles.category}>{item.brand ? item.brand : ''}</Text>
       </View>
     </TouchableHighlight>
   );

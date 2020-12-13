@@ -8,7 +8,8 @@ export default class ViewIngredientsButton extends React.Component {
     return (
       <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={this.props.onPress}>
         <View style={styles.container}>
-          <Text style={styles.text}>View Ingredients</Text>
+          <Text style={styles.text}>GRESIZE Recommendation</Text>
+          <Text>We suggest <Text style={{ fontWeight: 'bold' }}>size L </Text> for you</Text>
         </View>
       </TouchableHighlight>
     );

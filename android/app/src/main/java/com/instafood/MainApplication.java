@@ -27,6 +27,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
 import javax.annotation.Nullable;
+import com.viromedia.bridge.ReactViroPackage;
+import com.facebook.react.shell.MainReactPackage;
+import com.horcrux.svg.SvgPackage;
 
 public class MainApplication extends Application implements ReactApplication {
   private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(
@@ -43,6 +46,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       List<ReactPackage> packages = new PackageList(this).getPackages();
       packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider));
+      packages.add(new SvgPackage());
+      packages.add(new MainReactPackage());
+      packages.add(new ReactViroPackage(ReactViroPackage.ViroPlatform.AR))
       return packages;
     }
 
